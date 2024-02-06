@@ -5,7 +5,7 @@ import orf
 
 def _parse_args():
     parser = argparse.ArgumentParser(
-        description='Needleman-Wunsch algorithm')
+        description='Open Reading Frames (ORF)')
     parser.add_argument('-f', '--fasta', action='store',
                         help='<Required> DNA sequence in fasta format',
                         required=True)
