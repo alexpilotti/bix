@@ -3,13 +3,25 @@ import os
 
 import numpy as np
 
+FASTA_START_SYMBOL = ">"
+
 
 def load_fasta(path):
     with open(path, "r") as f:
-        desc = f.readline().strip()[1:]
+        desc = f.readline().strip()
+        if not desc.startswith(FASTA_START_SYMBOL):
+            raise Exception(
+                'Invalid FASTA format. The first line must start with "%s"' %
+                FASTA_START_SYMBOL)
+        desc = desc[1:]
+
         seq = ""
         for line in f:
-            seq += line.strip()
+            seq_line = line.strip()
+            # Only the first sequence is loaded
+            if seq_line.startswith(FASTA_START_SYMBOL):
+                break
+            seq += seq_line
 
     return desc, seq
 
