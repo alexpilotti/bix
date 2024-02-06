@@ -35,9 +35,9 @@ options:
                         <Required> DNA sequence in fasta format
   -r, --include-reverse_strand
                         Look for ORFs in the reverse strand as well
-  ```
+```
 
-  Sample alignment, with the FASTA file located in the `samples` directory:
+Usage example, with a FASTA file located in the `samples` directory:
 
 ```console
 ./orf.sh  -f ./samples/orfs_rosalind.fasta -r
