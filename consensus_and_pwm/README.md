@@ -35,10 +35,10 @@ options:
                         <Required> Multiple DNA sequences in fasta format
 ```
 
-Sample, with a FASTA file located in the `samples` directory:
+Usage example, with a FASTA file located in the `samples` directory:
 
 ```console
-./consensus.sh -f samples/consensus_test.fa
+./consensus.sh -f samples/consensus_test.fasta
 Sequences:
 
 Rosalind_1
