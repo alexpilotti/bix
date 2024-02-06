@@ -46,21 +46,26 @@ def get_reverse_strand_sequence(seq):
 
 def find_orfs(seq):
     orfs = []
-    i = seq.find(START_CODON)
-    while i > 0:
-        seq = seq[i:]
-        codons = [(seq[i:i+CODON_LENGHT]).upper() for i in
-                  range(0, len(seq), CODON_LENGHT)]
+    reading_frames = [seq, seq[1:], seq[2:]]
+    for frame in reading_frames:
+        codons = [(frame[i:i+CODON_LENGHT]).upper() for i in
+                  range(0, len(frame), CODON_LENGHT)]
+        # Make sure the last item has the correct codon length or remove it
+        if codons and len(codons[-1]) != CODON_LENGHT:
+            codons.pop()
 
-        current_orf = []
-        for codon in codons:
-            if current_orf and codon in STOP_CODONS:
-                orfs.append(current_orf)
-                current_orf = []
-            elif current_orf or codon == START_CODON:
-                current_orf.append(codon)
-
-        i = seq.find(START_CODON, 1)
+        while codons:
+            current_orf = []
+            for i, codon in enumerate(codons):
+                if current_orf and codon in STOP_CODONS:
+                    orfs.append(current_orf)
+                    break
+                elif current_orf or codon == START_CODON:
+                    if not current_orf:
+                        codons = codons[i+1:]
+                    current_orf.append(codon)
+            if not current_orf:
+                break
     return orfs
 
 
