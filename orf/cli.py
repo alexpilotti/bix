@@ -37,7 +37,7 @@ def main():
     if args["include_reverse_strand"]:
         dna_reverse_seq = orf.get_reverse_strand_sequence(dna_seq)
         print("")
-        print("Reverse DNA sequence: %s" % dna_reverse_seq)
+        print("Reverse complement DNA sequence: %s" % dna_reverse_seq)
         _print_orfs(dna_reverse_seq)
 
 
