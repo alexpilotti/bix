@@ -1,4 +1,8 @@
+import numpy as np
+
 FASTA_START_SYMBOL = ">"
+BASES = ["A", "C", "G", "T"]
+DEFAULT_BGP = 0.25
 
 
 def load_multi_fasta(path):
@@ -25,27 +29,33 @@ def load_multi_fasta(path):
     return sequences
 
 
-def compute_consensus(sequences):
+def get_consensus_seq(m):
+    consensus_seq = ""
+    for i in range(0, m.shape[1]):
+        max_val = 0
+        max_base = None
+        for j, base in enumerate(BASES):
+            if m[j][i] > max_val:
+                max_base = base
+                max_val = m[j][i]
+        consensus_seq += max_base
+    return consensus_seq
+
+
+def compute_matrices(sequences, bgps):
     _, seq = sequences[0]
     seq_len = len(seq)
 
-    pfm = {"A": [0] * seq_len,
-           "T": [0] * seq_len,
-           "C": [0] * seq_len,
-           "G": [0] * seq_len}
-
+    pfm = np.zeros([len(BASES), seq_len])
     for _, seq in sequences:
         for i, base in enumerate(seq):
-            pfm[base][i] += 1
+            pfm[BASES.index(base)][i] += 1
 
-    consensus_seq = ""
-    for i in range(0, seq_len):
-        max_val = 0
-        max_base = None
-        for base in pfm.keys():
-            if pfm[base][i] > max_val:
-                max_base = base
-                max_val = pfm[base][i]
-        consensus_seq += max_base
+    n = len(sequences)
+    bps = np.array([bgps[base] for base in BASES])
+    ppm = pfm / n
+    # Ignore divide by zero errors in log2
+    with np.errstate(divide='ignore'):
+        pwm = np.log2(ppm / bps[:, None])
 
-    return pfm, consensus_seq
+    return pfm, pwm
