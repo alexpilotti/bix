@@ -19,7 +19,7 @@ def main():
     args = _parse_args()
 
     sequences = consensus.load_multi_fasta(args["fasta"])
-    profile, consensus_seq = consensus.compute_consensus(sequences)
+    pfm, consensus_seq = consensus.compute_consensus(sequences)
 
     print("Sequences:")
     print("")
@@ -32,7 +32,7 @@ def main():
     print(consensus_seq)
     print("")
     print("Profile:")
-    for k, v in profile.items():
+    for k, v in pfm.items():
         print("%s: %s" % (k, v))
 
 

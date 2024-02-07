@@ -29,23 +29,23 @@ def compute_consensus(sequences):
     _, seq = sequences[0]
     seq_len = len(seq)
 
-    profile = {"A": [0] * seq_len,
-               "T": [0] * seq_len,
-               "C": [0] * seq_len,
-               "G": [0] * seq_len}
+    pfm = {"A": [0] * seq_len,
+           "T": [0] * seq_len,
+           "C": [0] * seq_len,
+           "G": [0] * seq_len}
 
     for _, seq in sequences:
         for i, base in enumerate(seq):
-            profile[base][i] += 1
+            pfm[base][i] += 1
 
     consensus_seq = ""
     for i in range(0, seq_len):
         max_val = 0
         max_base = None
-        for base in profile.keys():
-            if profile[base][i] > max_val:
+        for base in pfm.keys():
+            if pfm[base][i] > max_val:
                 max_base = base
-                max_val = profile[base][i]
+                max_val = pfm[base][i]
         consensus_seq += max_base
 
-    return profile, consensus_seq
+    return pfm, consensus_seq
