@@ -48,7 +48,6 @@ def main():
     pfm, pwm = consensus.compute_matrices(sequences, bgps)
 
     consensus_pfm = consensus.get_consensus_seq(pfm)
-    consensus_pwm = consensus.get_consensus_seq(pwm)
 
     print("Sequences:")
     print("")
@@ -60,15 +59,12 @@ def main():
     print("PFM:")
     _print_matrix(pfm)
     print("")
-    print("Consensus PFM:")
+    print("Consensus:")
     print(consensus_pfm)
 
     print("")
     print("PWM:")
     _print_matrix(pwm)
-    print("")
-    print("Consensus PWM:")
-    print(consensus_pwm)
 
 
 if __name__ == '__main__':
