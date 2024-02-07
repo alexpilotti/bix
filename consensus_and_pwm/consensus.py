@@ -43,6 +43,11 @@ def get_consensus_seq(m):
 
 
 def compute_matrices(sequences, bgps):
+    if sum(bgps.values()) != 1:
+        raise Exception(
+            "The sum of the background probabilities for all the bases "
+            "must be 1")
+
     _, seq = sequences[0]
     seq_len = len(seq)
 
