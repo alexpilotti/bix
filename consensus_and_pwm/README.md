@@ -66,7 +66,7 @@ C  [0. 0. 1. 4. 2. 0. 6. 1.]
 G  [1. 1. 6. 3. 0. 1. 0. 0.]
 T  [1. 5. 0. 0. 0. 1. 1. 6.]]
 
-Consensus PFM:
+Consensus:
 ATGCAACT
 
 PWM:
@@ -74,7 +74,4 @@ A [[ 1.51 -0.81  -inf  -inf  1.51  1.51  -inf  -inf]
 C  [ -inf  -inf -0.81  1.19  0.19  -inf  1.78 -0.81]
 G  [-0.81 -0.81  1.78  0.78  -inf -0.81  -inf  -inf]
 T  [-0.81  1.51  -inf  -inf  -inf -0.81 -0.81  1.78]]
-
-Consensus PWM:
-ATGCAACT
 ```
