@@ -65,17 +65,22 @@ def _print_separator():
     print("-" * 80)
 
 
-s1 = "DOROTHYCROWFOOTHODGKIN"
-s2 = "DOROTHYHODGKIN"
+def main():
+    s1 = "DOROTHYCROWFOOTHODGKIN"
+    s2 = "DOROTHYHODGKIN"
 
-m = dotplot(s1, s2)
-print_dotplot_1(m)
-_print_separator()
+    m = dotplot(s1, s2)
+    print_dotplot_1(m)
+    _print_separator()
 
-print_dotplot_2(s1, s2, m)
-_print_separator()
+    print_dotplot_2(s1, s2, m)
+    _print_separator()
 
-print_dotplot_3(s1, s2, m)
-_print_separator()
+    print_dotplot_3(s1, s2, m)
+    _print_separator()
 
-show_dotplot_window(s1, s2, m)
+    show_dotplot_window(s1, s2, m)
+
+
+if __name__ == '__main__':
+    main()
