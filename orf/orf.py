@@ -38,10 +38,7 @@ def load_fasta(path):
 
 
 def get_reverse_strand_sequence(seq):
-    seq1 = ""
-    for s in seq:
-        seq1 += DNA_BASE_PAIRS[s]
-    return seq1[::-1]
+    return "".join([DNA_BASE_PAIRS[s] for s in seq])[::-1]
 
 
 def find_orfs(seq):
