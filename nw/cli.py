@@ -34,7 +34,7 @@ def _print_matrix(m):
     print("")
 
 
-def _print_alignements(alignments, desc1, desc2):
+def _print_alignments(alignments, desc1, desc2):
     print("Sequence 1: %s" % desc1)
     print("Sequence 2: %s" % desc2)
     print("")
@@ -63,7 +63,7 @@ def main():
     if args["print_matrix"]:
         _print_matrix(m)
 
-    _print_alignements(alignments, desc1, desc2)
+    _print_alignments(alignments, desc1, desc2)
 
 
 if __name__ == '__main__':
